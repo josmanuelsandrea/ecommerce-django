@@ -1,0 +1,41 @@
+# Virtual Environment
+.venv/
+
+# IDE-specific settings
+.vscode/
+.idea/
+
+# Compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database
+*.sqlite3
+
+# Log files
+*.log
+
+# Environment variables
+*.env
+
+# IDE project files
+*.pyproj
+*.pycproj
+.project
+.pydevproject
+
+# Coverage reports
+*.coverage
+
+# macOS system files
+.DS_Store
+
+# Django static files
+static/
+imgs/
+
+# Django migration files
+migrations/*
+!migrations/__init__.py
