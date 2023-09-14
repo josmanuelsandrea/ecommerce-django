@@ -43,5 +43,6 @@ urlpatterns = [
     path('api/', include('users.api.router')),
     path('api/', include(router_categories.urls)),
     path('api/', include(router_products.urls)),
-    path('api/', include(router_reviews.urls))
+    path('api/', include(router_reviews.urls)),
+    path('api/', include('shopping.api.router'))
 ]
