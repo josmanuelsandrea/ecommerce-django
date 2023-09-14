@@ -37,5 +37,5 @@ static/
 imgs/
 
 # Django migration files
-migrations/*
-!migrations/__init__.py
+_migrations/*
+!_migrations/__init__.py
