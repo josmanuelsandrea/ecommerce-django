@@ -5,9 +5,13 @@ from rest_framework.permissions import IsAuthenticated
 from shopping.models import Shopping_List, Shopping_List_Item
 from shopping.api.serializers import ShoppingListSerializer, ShoppingListItemSerializer, ReceiveShoppingListWithItemsSerializer
 from users.models import User
+from drf_yasg.utils import swagger_auto_schema
 
 class ShoppingListAPIView(APIView):
     permission_classes = [IsAuthenticated]
+
+    # RETRIEVE THE ITEMS OF THE SHOPPING LIST OF THE GIVEN USER
+    @swagger_auto_schema(operation_description="Retrieve the items inside of the shopping list of the given user")
     def get(self, request):
         # Get the shopping list of an user
         shopping_list = Shopping_List.objects.filter(user=request.user.id)
@@ -22,6 +26,7 @@ class ShoppingListAPIView(APIView):
         else:
             return Response(status=status.HTTP_404_NOT_FOUND, data={'detail': 'User does not have a shopping list'})
     
+    @swagger_auto_schema(operation_description="Create a shopping list for the user")
     def post(self, request):
         # Check if there is an existing shopping list for the user
         shopping_list = Shopping_List.objects.filter(user=request.user.id)
@@ -39,6 +44,7 @@ class ShoppingListAPIView(APIView):
 
 class ShoppingListItemAPIView(APIView):
     permission_classes = [IsAuthenticated]
+    @swagger_auto_schema(operation_description="Add an item to the shopping list of the given user")
     def post(self, request):
         CORRESPONDING_LIST = Shopping_List.objects.filter(user=request.user.id)[0]
         request.data._mutable = True
